@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PagesController::class, 'getHome']);
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [PagesController::class, 'getAbout']);
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', [PagesController::class, 'getContact']);
+
+Route::post('/contact/submit', [MessagesController::class, 'submit']);
+
+Route::get('/messages', [MessagesController::class, 'getMessages']);
+
+
 
 Auth::routes();
 

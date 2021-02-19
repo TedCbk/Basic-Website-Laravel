@@ -12,10 +12,29 @@
     <title>Acme</title>
 </head>
 <body>
-    @include('inc.navbar')
-    @yield('content')
 
-    @include('inc.sidebar')
+    @include('inc.navbar')
+    
+    <div class="container">
+        @if(Request::is('/'))
+        @include('inc.showcase')
+        @endif
+    <div class="row mt-2">
+        <div class="col-md-8">
+            @include('inc.messages')
+            @yield('content')
+        </div>
+        <div class="col-md-4">
+            @include('inc.sidebar')
+        </div>
+    </div>
+    </div>
+
+    <footer id="footer" class="text-center">
+        <p>Copyright 2021 &copy; Acme</p>
+    </footer>
+
+    
     
 </body>
 </html>
